@@ -16,5 +16,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+
+        private void myButton8_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

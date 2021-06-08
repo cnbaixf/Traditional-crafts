@@ -31,180 +31,194 @@ namespace WindowsFormsApp1
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txButton8 = new TX.Framework.WindowUI.Controls.TXButton();
-            this.txButton1 = new TX.Framework.WindowUI.Controls.TXButton();
-            this.txButton2 = new TX.Framework.WindowUI.Controls.TXButton();
-            this.txButton3 = new TX.Framework.WindowUI.Controls.TXButton();
-            this.txButton4 = new TX.Framework.WindowUI.Controls.TXButton();
-            this.txButton5 = new TX.Framework.WindowUI.Controls.TXButton();
-            this.txButton6 = new TX.Framework.WindowUI.Controls.TXButton();
-            this.txButton7 = new TX.Framework.WindowUI.Controls.TXButton();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txButton9 = new TX.Framework.WindowUI.Controls.TXButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.myButton1 = new ControlLibrary.MyButton();
+            this.myButton2 = new ControlLibrary.MyButton();
+            this.myButton3 = new ControlLibrary.MyButton();
+            this.myButton4 = new ControlLibrary.MyButton();
+            this.myButton5 = new ControlLibrary.MyButton();
+            this.myButton6 = new ControlLibrary.MyButton();
+            this.myButton7 = new ControlLibrary.MyButton();
+            this.myButton8 = new ControlLibrary.MyButton();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(123, 72);
+            this.panel1.Location = new System.Drawing.Point(184, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 377);
+            this.panel1.Size = new System.Drawing.Size(175, 224);
             this.panel1.TabIndex = 2;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.txButton1);
-            this.flowLayoutPanel1.Controls.Add(this.txButton2);
-            this.flowLayoutPanel1.Controls.Add(this.txButton3);
-            this.flowLayoutPanel1.Controls.Add(this.txButton4);
-            this.flowLayoutPanel1.Controls.Add(this.txButton5);
-            this.flowLayoutPanel1.Controls.Add(this.txButton6);
-            this.flowLayoutPanel1.Controls.Add(this.txButton7);
+            this.flowLayoutPanel1.Controls.Add(this.myButton1);
+            this.flowLayoutPanel1.Controls.Add(this.myButton2);
+            this.flowLayoutPanel1.Controls.Add(this.myButton3);
+            this.flowLayoutPanel1.Controls.Add(this.myButton4);
+            this.flowLayoutPanel1.Controls.Add(this.myButton5);
+            this.flowLayoutPanel1.Controls.Add(this.myButton6);
+            this.flowLayoutPanel1.Controls.Add(this.myButton7);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 35);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(796, 34);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
-            // txButton8
-            // 
-            this.txButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton8.Image = null;
-            this.txButton8.Location = new System.Drawing.Point(768, 2);
-            this.txButton8.Name = "txButton8";
-            this.txButton8.Size = new System.Drawing.Size(30, 28);
-            this.txButton8.TabIndex = 4;
-            this.txButton8.Text = "×";
-            this.txButton8.UseVisualStyleBackColor = true;
-            // 
-            // txButton1
-            // 
-            this.txButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton1.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txButton1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txButton1.Image = null;
-            this.txButton1.Location = new System.Drawing.Point(3, 3);
-            this.txButton1.Name = "txButton1";
-            this.txButton1.Size = new System.Drawing.Size(100, 28);
-            this.txButton1.TabIndex = 0;
-            this.txButton1.Text = "Animation";
-            this.txButton1.UseVisualStyleBackColor = true;
-            // 
-            // txButton2
-            // 
-            this.txButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton2.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txButton2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txButton2.Image = null;
-            this.txButton2.Location = new System.Drawing.Point(109, 3);
-            this.txButton2.Name = "txButton2";
-            this.txButton2.Size = new System.Drawing.Size(100, 28);
-            this.txButton2.TabIndex = 1;
-            this.txButton2.Text = "Movie";
-            this.txButton2.UseVisualStyleBackColor = true;
-            // 
-            // txButton3
-            // 
-            this.txButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton3.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txButton3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txButton3.Image = null;
-            this.txButton3.Location = new System.Drawing.Point(215, 3);
-            this.txButton3.Name = "txButton3";
-            this.txButton3.Size = new System.Drawing.Size(100, 28);
-            this.txButton3.TabIndex = 2;
-            this.txButton3.Text = "Comic";
-            this.txButton3.UseVisualStyleBackColor = true;
-            // 
-            // txButton4
-            // 
-            this.txButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton4.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txButton4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txButton4.Image = null;
-            this.txButton4.Location = new System.Drawing.Point(321, 3);
-            this.txButton4.Name = "txButton4";
-            this.txButton4.Size = new System.Drawing.Size(100, 28);
-            this.txButton4.TabIndex = 3;
-            this.txButton4.Text = "Picture";
-            this.txButton4.UseVisualStyleBackColor = true;
-            // 
-            // txButton5
-            // 
-            this.txButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton5.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txButton5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txButton5.Image = null;
-            this.txButton5.Location = new System.Drawing.Point(427, 3);
-            this.txButton5.Name = "txButton5";
-            this.txButton5.Size = new System.Drawing.Size(100, 28);
-            this.txButton5.TabIndex = 4;
-            this.txButton5.Text = "Novel";
-            this.txButton5.UseVisualStyleBackColor = true;
-            // 
-            // txButton6
-            // 
-            this.txButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton6.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txButton6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txButton6.Image = null;
-            this.txButton6.Location = new System.Drawing.Point(533, 3);
-            this.txButton6.Name = "txButton6";
-            this.txButton6.Size = new System.Drawing.Size(100, 28);
-            this.txButton6.TabIndex = 5;
-            this.txButton6.Text = "Music";
-            this.txButton6.UseVisualStyleBackColor = true;
-            // 
-            // txButton7
-            // 
-            this.txButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton7.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txButton7.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txButton7.Image = null;
-            this.txButton7.Location = new System.Drawing.Point(639, 3);
-            this.txButton7.Name = "txButton7";
-            this.txButton7.Size = new System.Drawing.Size(100, 28);
-            this.txButton7.TabIndex = 6;
-            this.txButton7.Text = "Game";
-            this.txButton7.UseVisualStyleBackColor = true;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.flowLayoutPanel2.Controls.Add(this.txButton9);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 75);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(103, 374);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(103, 224);
             this.flowLayoutPanel2.TabIndex = 5;
             // 
-            // txButton9
+            // tableLayoutPanel1
             // 
-            this.txButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txButton9.Image = null;
-            this.txButton9.Location = new System.Drawing.Point(3, 3);
-            this.txButton9.Name = "txButton9";
-            this.txButton9.Size = new System.Drawing.Size(100, 28);
-            this.txButton9.TabIndex = 0;
-            this.txButton9.Text = "全部";
-            this.txButton9.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(305, 144);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(469, 230);
+            this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(365, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(101, 100);
+            this.panel2.TabIndex = 6;
+            // 
+            // myButton1
+            // 
+            this.myButton1.DefaultBorderWidth = 1;
+            this.myButton1.FocusedBorderWidth = 0;
+            this.myButton1.HeightLightBorderWidth = 0;
+            this.myButton1.Image = null;
+            this.myButton1.Location = new System.Drawing.Point(3, 3);
+            this.myButton1.Name = "myButton1";
+            this.myButton1.Size = new System.Drawing.Size(100, 28);
+            this.myButton1.TabIndex = 7;
+            this.myButton1.Text = "Animation";
+            this.myButton1.UseVisualStyleBackColor = true;
+            // 
+            // myButton2
+            // 
+            this.myButton2.DefaultBorderWidth = 1;
+            this.myButton2.FocusedBorderWidth = 0;
+            this.myButton2.HeightLightBorderWidth = 0;
+            this.myButton2.Image = null;
+            this.myButton2.Location = new System.Drawing.Point(109, 3);
+            this.myButton2.Name = "myButton2";
+            this.myButton2.Size = new System.Drawing.Size(100, 28);
+            this.myButton2.TabIndex = 8;
+            this.myButton2.Text = "Movie";
+            this.myButton2.UseVisualStyleBackColor = true;
+            // 
+            // myButton3
+            // 
+            this.myButton3.DefaultBorderWidth = 1;
+            this.myButton3.FocusedBorderWidth = 0;
+            this.myButton3.HeightLightBorderWidth = 0;
+            this.myButton3.Image = null;
+            this.myButton3.Location = new System.Drawing.Point(215, 3);
+            this.myButton3.Name = "myButton3";
+            this.myButton3.Size = new System.Drawing.Size(100, 28);
+            this.myButton3.TabIndex = 9;
+            this.myButton3.Text = "Comic";
+            this.myButton3.UseVisualStyleBackColor = true;
+            // 
+            // myButton4
+            // 
+            this.myButton4.DefaultBorderWidth = 1;
+            this.myButton4.FocusedBorderWidth = 0;
+            this.myButton4.HeightLightBorderWidth = 0;
+            this.myButton4.Image = null;
+            this.myButton4.Location = new System.Drawing.Point(321, 3);
+            this.myButton4.Name = "myButton4";
+            this.myButton4.Size = new System.Drawing.Size(100, 28);
+            this.myButton4.TabIndex = 10;
+            this.myButton4.Text = "Picture";
+            this.myButton4.UseVisualStyleBackColor = true;
+            // 
+            // myButton5
+            // 
+            this.myButton5.DefaultBorderWidth = 1;
+            this.myButton5.FocusedBorderWidth = 0;
+            this.myButton5.HeightLightBorderWidth = 0;
+            this.myButton5.Image = null;
+            this.myButton5.Location = new System.Drawing.Point(427, 3);
+            this.myButton5.Name = "myButton5";
+            this.myButton5.Size = new System.Drawing.Size(100, 28);
+            this.myButton5.TabIndex = 11;
+            this.myButton5.Text = "Novel";
+            this.myButton5.UseVisualStyleBackColor = true;
+            // 
+            // myButton6
+            // 
+            this.myButton6.DefaultBorderWidth = 1;
+            this.myButton6.FocusedBorderWidth = 0;
+            this.myButton6.HeightLightBorderWidth = 0;
+            this.myButton6.Image = null;
+            this.myButton6.Location = new System.Drawing.Point(533, 3);
+            this.myButton6.Name = "myButton6";
+            this.myButton6.Size = new System.Drawing.Size(100, 28);
+            this.myButton6.TabIndex = 12;
+            this.myButton6.Text = "Music";
+            this.myButton6.UseVisualStyleBackColor = true;
+            // 
+            // myButton7
+            // 
+            this.myButton7.DefaultBorderWidth = 1;
+            this.myButton7.FocusedBorderWidth = 0;
+            this.myButton7.HeightLightBorderWidth = 0;
+            this.myButton7.Image = null;
+            this.myButton7.Location = new System.Drawing.Point(639, 3);
+            this.myButton7.Name = "myButton7";
+            this.myButton7.Size = new System.Drawing.Size(100, 28);
+            this.myButton7.TabIndex = 13;
+            this.myButton7.Text = "Game";
+            this.myButton7.UseVisualStyleBackColor = true;
+            // 
+            // myButton8
+            // 
+            this.myButton8.DefaultBorderWidth = 1;
+            this.myButton8.FocusedBorderWidth = 0;
+            this.myButton8.HeightLightBorderWidth = 0;
+            this.myButton8.Image = null;
+            this.myButton8.Location = new System.Drawing.Point(1097, 1);
+            this.myButton8.Name = "myButton8";
+            this.myButton8.Size = new System.Drawing.Size(32, 33);
+            this.myButton8.TabIndex = 7;
+            this.myButton8.Text = "×";
+            this.myButton8.UseVisualStyleBackColor = true;
+            this.myButton8.Click += new System.EventHandler(this.myButton8_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.txButton8);
+            this.ClientSize = new System.Drawing.Size(1129, 599);
+            this.Controls.Add(this.myButton8);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "Form1";
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -213,16 +227,17 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private TX.Framework.WindowUI.Controls.TXButton txButton1;
-        private TX.Framework.WindowUI.Controls.TXButton txButton2;
-        private TX.Framework.WindowUI.Controls.TXButton txButton3;
-        private TX.Framework.WindowUI.Controls.TXButton txButton4;
-        private TX.Framework.WindowUI.Controls.TXButton txButton5;
-        private TX.Framework.WindowUI.Controls.TXButton txButton6;
-        private TX.Framework.WindowUI.Controls.TXButton txButton7;
-        private TX.Framework.WindowUI.Controls.TXButton txButton8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private TX.Framework.WindowUI.Controls.TXButton txButton9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel2;
+        private ControlLibrary.MyButton myButton1;
+        private ControlLibrary.MyButton myButton2;
+        private ControlLibrary.MyButton myButton3;
+        private ControlLibrary.MyButton myButton4;
+        private ControlLibrary.MyButton myButton5;
+        private ControlLibrary.MyButton myButton6;
+        private ControlLibrary.MyButton myButton7;
+        private ControlLibrary.MyButton myButton8;
     }
 }
 

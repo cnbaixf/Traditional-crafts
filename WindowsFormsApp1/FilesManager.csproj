@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlLibrary">
+      <HintPath>..\ControlLibrary\bin\Debug\ControlLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -49,12 +52,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TX.Framework">
-      <HintPath>..\..\controls\winform.controls\TTX.Framework.WindowUI\TX.Framework.WindowUI\Lib\TX.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="TX.Framework.WindowUI">
-      <HintPath>..\..\controls\winform.controls\TTX.Framework.WindowUI\TX.Framework.WindowUI\bin\x86\Debug\TX.Framework.WindowUI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainForm.cs">
