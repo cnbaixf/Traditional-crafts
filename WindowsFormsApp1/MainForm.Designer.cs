@@ -34,6 +34,8 @@ namespace WindowsFormsApp1
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.myButton9 = new ControlLibrary.MyButton();
+            this.myButton8 = new ControlLibrary.MyButton();
             this.myButton1 = new ControlLibrary.MyButton();
             this.myButton2 = new ControlLibrary.MyButton();
             this.myButton3 = new ControlLibrary.MyButton();
@@ -41,7 +43,6 @@ namespace WindowsFormsApp1
             this.myButton5 = new ControlLibrary.MyButton();
             this.myButton6 = new ControlLibrary.MyButton();
             this.myButton7 = new ControlLibrary.MyButton();
-            this.myButton8 = new ControlLibrary.MyButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
@@ -100,11 +101,48 @@ namespace WindowsFormsApp1
             this.panel2.Size = new System.Drawing.Size(101, 100);
             this.panel2.TabIndex = 6;
             // 
+            // myButton9
+            // 
+            this.myButton9.BorderColor = System.Drawing.Color.DarkRed;
+            this.myButton9.FocusedBackColor = System.Drawing.Color.ForestGreen;
+            this.myButton9.FocusedBorderColor = System.Drawing.Color.Black;
+            this.myButton9.HighLightBackColor = System.Drawing.Color.Red;
+            this.myButton9.HighLightBorderColor = System.Drawing.Color.Black;
+            this.myButton9.Image = null;
+            this.myButton9.Location = new System.Drawing.Point(824, 234);
+            this.myButton9.Name = "myButton9";
+            this.myButton9.Size = new System.Drawing.Size(100, 28);
+            this.myButton9.TabIndex = 8;
+            this.myButton9.Text = "myButton9";
+            this.myButton9.UseVisualStyleBackColor = true;
+            // 
+            // myButton8
+            // 
+            this.myButton8.BorderColor = System.Drawing.Color.Black;
+            this.myButton8.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton8.FocusedBorderColor = System.Drawing.Color.Black;
+            this.myButton8.FocusedBorderWidth = 0;
+            this.myButton8.HeightLightBorderWidth = 0;
+            this.myButton8.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton8.HighLightBorderColor = System.Drawing.Color.Black;
+            this.myButton8.Image = null;
+            this.myButton8.Location = new System.Drawing.Point(1097, 1);
+            this.myButton8.Name = "myButton8";
+            this.myButton8.Size = new System.Drawing.Size(32, 33);
+            this.myButton8.TabIndex = 7;
+            this.myButton8.Text = "×";
+            this.myButton8.UseVisualStyleBackColor = true;
+            this.myButton8.Click += new System.EventHandler(this.myButton8_Click);
+            // 
             // myButton1
             // 
-            this.myButton1.DefaultBorderWidth = 1;
+            this.myButton1.BorderColor = System.Drawing.Color.Black;
+            this.myButton1.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton1.FocusedBorderColor = System.Drawing.Color.Black;
             this.myButton1.FocusedBorderWidth = 0;
             this.myButton1.HeightLightBorderWidth = 0;
+            this.myButton1.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton1.HighLightBorderColor = System.Drawing.Color.Black;
             this.myButton1.Image = null;
             this.myButton1.Location = new System.Drawing.Point(3, 3);
             this.myButton1.Name = "myButton1";
@@ -115,9 +153,13 @@ namespace WindowsFormsApp1
             // 
             // myButton2
             // 
-            this.myButton2.DefaultBorderWidth = 1;
+            this.myButton2.BorderColor = System.Drawing.Color.Black;
+            this.myButton2.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton2.FocusedBorderColor = System.Drawing.Color.Black;
             this.myButton2.FocusedBorderWidth = 0;
             this.myButton2.HeightLightBorderWidth = 0;
+            this.myButton2.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton2.HighLightBorderColor = System.Drawing.Color.Black;
             this.myButton2.Image = null;
             this.myButton2.Location = new System.Drawing.Point(109, 3);
             this.myButton2.Name = "myButton2";
@@ -128,9 +170,13 @@ namespace WindowsFormsApp1
             // 
             // myButton3
             // 
-            this.myButton3.DefaultBorderWidth = 1;
+            this.myButton3.BorderColor = System.Drawing.Color.Black;
+            this.myButton3.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton3.FocusedBorderColor = System.Drawing.Color.Black;
             this.myButton3.FocusedBorderWidth = 0;
             this.myButton3.HeightLightBorderWidth = 0;
+            this.myButton3.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton3.HighLightBorderColor = System.Drawing.Color.Black;
             this.myButton3.Image = null;
             this.myButton3.Location = new System.Drawing.Point(215, 3);
             this.myButton3.Name = "myButton3";
@@ -141,22 +187,31 @@ namespace WindowsFormsApp1
             // 
             // myButton4
             // 
-            this.myButton4.DefaultBorderWidth = 1;
+            this.myButton4.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.myButton4.BorderColor = System.Drawing.Color.Black;
+            this.myButton4.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton4.FocusedBorderColor = System.Drawing.Color.Black;
             this.myButton4.FocusedBorderWidth = 0;
             this.myButton4.HeightLightBorderWidth = 0;
+            this.myButton4.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton4.HighLightBorderColor = System.Drawing.Color.Black;
             this.myButton4.Image = null;
             this.myButton4.Location = new System.Drawing.Point(321, 3);
             this.myButton4.Name = "myButton4";
             this.myButton4.Size = new System.Drawing.Size(100, 28);
             this.myButton4.TabIndex = 10;
             this.myButton4.Text = "Picture";
-            this.myButton4.UseVisualStyleBackColor = true;
+            this.myButton4.UseVisualStyleBackColor = false;
             // 
             // myButton5
             // 
-            this.myButton5.DefaultBorderWidth = 1;
+            this.myButton5.BorderColor = System.Drawing.Color.Black;
+            this.myButton5.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton5.FocusedBorderColor = System.Drawing.Color.Black;
             this.myButton5.FocusedBorderWidth = 0;
             this.myButton5.HeightLightBorderWidth = 0;
+            this.myButton5.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton5.HighLightBorderColor = System.Drawing.Color.Black;
             this.myButton5.Image = null;
             this.myButton5.Location = new System.Drawing.Point(427, 3);
             this.myButton5.Name = "myButton5";
@@ -167,9 +222,13 @@ namespace WindowsFormsApp1
             // 
             // myButton6
             // 
-            this.myButton6.DefaultBorderWidth = 1;
+            this.myButton6.BorderColor = System.Drawing.Color.Black;
+            this.myButton6.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton6.FocusedBorderColor = System.Drawing.Color.Black;
             this.myButton6.FocusedBorderWidth = 0;
             this.myButton6.HeightLightBorderWidth = 0;
+            this.myButton6.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton6.HighLightBorderColor = System.Drawing.Color.Black;
             this.myButton6.Image = null;
             this.myButton6.Location = new System.Drawing.Point(533, 3);
             this.myButton6.Name = "myButton6";
@@ -180,9 +239,13 @@ namespace WindowsFormsApp1
             // 
             // myButton7
             // 
-            this.myButton7.DefaultBorderWidth = 1;
+            this.myButton7.BorderColor = System.Drawing.Color.Black;
+            this.myButton7.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton7.FocusedBorderColor = System.Drawing.Color.Black;
             this.myButton7.FocusedBorderWidth = 0;
             this.myButton7.HeightLightBorderWidth = 0;
+            this.myButton7.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton7.HighLightBorderColor = System.Drawing.Color.Black;
             this.myButton7.Image = null;
             this.myButton7.Location = new System.Drawing.Point(639, 3);
             this.myButton7.Name = "myButton7";
@@ -191,26 +254,13 @@ namespace WindowsFormsApp1
             this.myButton7.Text = "Game";
             this.myButton7.UseVisualStyleBackColor = true;
             // 
-            // myButton8
-            // 
-            this.myButton8.DefaultBorderWidth = 1;
-            this.myButton8.FocusedBorderWidth = 0;
-            this.myButton8.HeightLightBorderWidth = 0;
-            this.myButton8.Image = null;
-            this.myButton8.Location = new System.Drawing.Point(1097, 1);
-            this.myButton8.Name = "myButton8";
-            this.myButton8.Size = new System.Drawing.Size(32, 33);
-            this.myButton8.TabIndex = 7;
-            this.myButton8.Text = "×";
-            this.myButton8.UseVisualStyleBackColor = true;
-            this.myButton8.Click += new System.EventHandler(this.myButton8_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1129, 599);
+            this.Controls.Add(this.myButton9);
             this.Controls.Add(this.myButton8);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -238,6 +288,7 @@ namespace WindowsFormsApp1
         private ControlLibrary.MyButton myButton6;
         private ControlLibrary.MyButton myButton7;
         private ControlLibrary.MyButton myButton8;
+        private ControlLibrary.MyButton myButton9;
     }
 }
 

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ControlLibrary
@@ -37,26 +34,44 @@ namespace ControlLibrary
         /// 控件默认状态下的边框宽度
         /// </summary>
         private int _DefaultBorderWidth = 1;
+
         /// <summary>
         /// 控件高亮状态下的边框宽度
         /// </summary>
-        private int _HeightLightBorderWidth = 0;
+        private int _HeightLightBorderWidth = 1;
+
         /// <summary>
         /// 控件焦点状态下的边框宽度
         /// </summary>
-        private int _FocusedBorderWidth = 0;
+        private int _FocusedBorderWidth = 1;
 
+        /// <summary>
+        /// 控件高亮状态下的背景色
+        /// </summary>
+        private Color _HighLightBackColor = Color.Transparent;
+
+        /// <summary>
+        /// 控件焦点状态下的背景色
+        /// </summary>
+        private Color _FocusedBackColor = Color.Transparent;
+
+        /// <summary>
+        /// 控件默认状态下的边框色
+        /// </summary>
+        private Color _DefaultBorderColor = Color.Black;
+
+
+        /// <summary>
+        /// 控件高亮状态下的边框色
+        /// </summary>
+        private Color _HighLightBorderColor = Color.Black;
+
+        /// <summary>
+        /// 控件焦点状态下的边框色
+        /// </summary>
+        private Color _FocusedBorderColor = Color.Black;
 
         #endregion
-
-
-
-
-
-
-
-
-
 
         #region Initializes
         /// <summary>
@@ -64,17 +79,16 @@ namespace ControlLibrary
         /// </summary>
         public MyButton()
         {
-            this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            this.SetStyle(ControlStyles.DoubleBuffer, true);
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this._ControlState = EnumControlState.Default;
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.DoubleBuffer, true);
+            SetStyle(ControlStyles.ResizeRedraw, true);
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            _ControlState = EnumControlState.Default;
             base.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.Size = new Size(100, 28);
-            this.ResetRegion();
-
+            Size = new Size(100, 28);
+            ResetRegion();
         }
         #endregion
 
@@ -85,11 +99,11 @@ namespace ControlLibrary
         [DefaultValue(2)]
         public int CornerRadius
         {
-            get { return this._CornerRadius; }
+            get { return _CornerRadius; }
             set
             {
-                this._CornerRadius = value;
-                this.Invalidate();
+                _CornerRadius = value;
+                Invalidate();
             }
         }
 
@@ -99,8 +113,8 @@ namespace ControlLibrary
         [DefaultValue(typeof(Size), "16,16")]
         public Size ImageSize
         {
-            get { return this._ImageSize; }
-            set { this._ImageSize = value; this.Invalidate(); }
+            get { return _ImageSize; }
+            set { _ImageSize = value; Invalidate(); }
         }
 
         [Category("Properties")]
@@ -112,7 +126,7 @@ namespace ControlLibrary
             set
             {
                 base.Image = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -133,6 +147,66 @@ namespace ControlLibrary
         {
             get { return base.BackColor; }
             set { base.BackColor = value; }
+        }
+
+        [Category("Properties")]
+        [Browsable(true)]
+        [Description("高亮背景色")]
+        public Color HighLightBackColor
+        {
+            get { return _HighLightBackColor; }
+            set 
+            { 
+                _HighLightBackColor = value;
+                Invalidate();
+            }
+        }
+
+        [Category("Properties")]
+        [Browsable(true)]
+        [Description("焦点背景色")]
+        public Color FocusedBackColor
+        {
+            get { return _FocusedBackColor; }
+            set 
+            { 
+                _FocusedBackColor = value;
+                Invalidate();
+            }
+        }
+        [Category("Properties")]
+        [Browsable(true)]
+        [Description("边框色")]
+        public Color BorderColor
+        {
+            get { return _DefaultBorderColor; }
+            set { _DefaultBorderColor = value; }
+        }
+
+        [Category("Properties")]
+        [Browsable(true)]
+        [Description("高亮边框色")]
+        public Color HighLightBorderColor
+        {
+            get { return _HighLightBorderColor; }
+            set
+            {
+                _HighLightBorderColor = value;
+                Invalidate();
+            }
+        }
+
+        [Category("Properties")]
+        [Browsable(true)]
+        [Description("焦点边框色")]
+        public Color FocusedBorderColor
+        {
+            get { return _FocusedBorderColor; }
+            set
+            {
+                _FocusedBorderColor = value;
+                Invalidate();
+            }
         }
 
         [Category("Properties")]
@@ -160,43 +234,44 @@ namespace ControlLibrary
         [Category("Properties")]
         [Browsable(true)]
         [Description("默认状态边框宽度")]
+        [DefaultValue(1)]
         public int DefaultBorderWidth
         {
-            get { return this._DefaultBorderWidth; }
-            set 
+            get { return _DefaultBorderWidth; }
+            set
             {
-                this._DefaultBorderWidth = value;
-                this.Invalidate();
+                _DefaultBorderWidth = value;
+                Invalidate();
             }
         }
 
         [Category("Properties")]
         [Browsable(true)]
         [Description("高亮状态边框宽度")]
+        [DefaultValue(1)]
         public int HeightLightBorderWidth
         {
-            get { return this._HeightLightBorderWidth; }
+            get { return _HeightLightBorderWidth; }
             set
             {
-                this._HeightLightBorderWidth = value;
-                this.Invalidate();
+                _HeightLightBorderWidth = value;
+                Invalidate();
             }
         }
 
         [Category("Properties")]
         [Browsable(true)]
         [Description("焦点状态边框宽度")]
+        [DefaultValue(1)]
         public int FocusedBorderWidth
         {
-            get { return this._FocusedBorderWidth; }
+            get { return _FocusedBorderWidth; }
             set
             {
-                this._FocusedBorderWidth = value;
-                this.Invalidate();
+                _FocusedBorderWidth = value;
+                Invalidate();
             }
         }
-
-
 
         #endregion
 
@@ -204,8 +279,8 @@ namespace ControlLibrary
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
-            this._ControlState = EnumControlState.HeightLight;
-            this.Invalidate();
+            _ControlState = EnumControlState.HeightLight;
+            Invalidate();
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -213,16 +288,16 @@ namespace ControlLibrary
             base.OnMouseDown(e);
             if (e.Button == MouseButtons.Left)
             {
-                this._ControlState = EnumControlState.Focused;
-                this.Invalidate();
+                _ControlState = EnumControlState.Focused;
+                Invalidate();
             }
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            this._ControlState = EnumControlState.Default;
-            this.Invalidate();
+            _ControlState = EnumControlState.Default;
+            Invalidate();
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
@@ -230,8 +305,8 @@ namespace ControlLibrary
             base.OnMouseUp(e);
             if (e.Button == MouseButtons.Left)
             {
-                this._ControlState = EnumControlState.HeightLight;
-                this.Invalidate();
+                _ControlState = EnumControlState.HeightLight;
+                Invalidate();
             }
         }
 
@@ -240,8 +315,8 @@ namespace ControlLibrary
             base.OnKeyDown(e);
             if (e.KeyCode == Keys.Space)
             {
-                this._ControlState = EnumControlState.Focused;
-                this.Invalidate();
+                _ControlState = EnumControlState.Focused;
+                Invalidate();
             }
         }
 
@@ -250,46 +325,46 @@ namespace ControlLibrary
             base.OnKeyUp(e);
             if (e.KeyCode == Keys.Space)
             {
-                this._ControlState = EnumControlState.Default;
-                this.Invalidate();
-                this.OnClick(e);
+                _ControlState = EnumControlState.Default;
+                Invalidate();
+                OnClick(e);
             }
         }
 
         protected override void OnGotFocus(EventArgs e)
         {
             base.OnGotFocus(e);
-            this._ControlState = EnumControlState.HeightLight;
-            this.Invalidate();
+            _ControlState = EnumControlState.HeightLight;
+            Invalidate();
         }
 
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
-            this._ControlState = EnumControlState.Default;
-            this.Invalidate();
+            _ControlState = EnumControlState.Default;
+            Invalidate();
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            this.ResetRegion();
+            ResetRegion();
         }
 
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            this.ResetRegion();
+            ResetRegion();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             base.OnPaintBackground(e);
-            this.ResetRegion();
+            ResetRegion();
             Graphics g = e.Graphics;
-            this.DrawBackGround(g);
-            this.DrawContent(g);
+            DrawBackGround(g);
+            DrawContent(g);
         }
 
         #endregion
@@ -303,25 +378,25 @@ namespace ControlLibrary
         private void DrawBackGround(Graphics g)
         {
             GDIHelper.InitializeGraphics(g);
-            Rectangle rect = new Rectangle(1, 1, this.Width - 3, this.Height - 3);
+            Rectangle rect = new Rectangle(1, 1, Width - 3, Height - 3);
             RoundRectangle roundRect = new RoundRectangle(rect, new CornerRadius(_CornerRadius));
-            switch (this._ControlState)
+            switch (_ControlState)
             {
                 case EnumControlState.Default:
-                    if (this.FlatStyle != FlatStyle.Flat)
+                    if (FlatStyle != FlatStyle.Flat)
                     {
-                        GDIHelper.FillRectangle(g, roundRect,Color.White);
-                        GDIHelper.DrawPathBorder(g, roundRect,new Pen(Color.Black,_DefaultBorderWidth));
+                        GDIHelper.FillRectangle(g, roundRect, BackColor);
+                        GDIHelper.DrawPathBorder(g, roundRect, new Pen(_DefaultBorderColor, _DefaultBorderWidth));
                     }
                     break;
                 case EnumControlState.HeightLight:
-                    GDIHelper.FillRectangle(g, roundRect,Color.White);
-                    GDIHelper.DrawPathBorder(g, roundRect, new Pen(Color.Black, _HeightLightBorderWidth));
+                    GDIHelper.FillRectangle(g, roundRect, _HighLightBackColor);
+                    GDIHelper.DrawPathBorder(g, roundRect, new Pen(_HighLightBorderColor, _HeightLightBorderWidth));
                     break;
                 case EnumControlState.Focused:
-                    GDIHelper.FillRectangle(g, roundRect, Color.White);
-                    GDIHelper.DrawPathBorder(g, roundRect,new Pen(Color.Black,_FocusedBorderWidth));
-                    GDIHelper.DrawPathInnerBorder(g, roundRect, Color.Black);
+                    GDIHelper.FillRectangle(g, roundRect, _FocusedBackColor);
+                    GDIHelper.DrawPathBorder(g, roundRect, new Pen(_FocusedBorderColor, _FocusedBorderWidth));
+                    GDIHelper.DrawPathInnerBorder(g, roundRect, _FocusedBorderColor, 1);
                     break;
             }
         }
@@ -334,14 +409,14 @@ namespace ControlLibrary
         {
             Rectangle imageRect;
             Rectangle textRect;
-            this.CalculateRect(out imageRect, out textRect);
-            if (this.Image != null)
+            CalculateRect(out imageRect, out textRect);
+            if (Image != null)
             {
-                g.DrawImage(this.Image, imageRect, 0, 0, this._ImageSize.Width, this._ImageSize.Height, GraphicsUnit.Pixel);
+                g.DrawImage(Image, imageRect, 0, 0, _ImageSize.Width, _ImageSize.Height, GraphicsUnit.Pixel);
             }
 
-            Color forceColor = this.Enabled ? this.ForeColor : Color.Black;
-            TextRenderer.DrawText(g, this.Text, this.Font, textRect, forceColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            Color forceColor = Enabled ? ForeColor : Color.Black;
+            TextRenderer.DrawText(g, Text, Font, textRect, forceColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         }
 
         /// <summary>
@@ -356,102 +431,99 @@ namespace ControlLibrary
             if (Image == null)
             {
                 textRect = new Rectangle(
-                   this._Margin,
-                   this._Margin,
-                   this.Width - this._Margin * 2,
-                   this.Height - this._Margin * 2);
+                   _Margin,
+                   _Margin,
+                   Width - _Margin * 2,
+                   Height - _Margin * 2);
                 return;
             }
-            Size textSize = TextRenderer.MeasureText(this.Text, this.Font);
-            int textMaxWidth = this.Width - this._ImageSize.Width - this._Margin * 3;
+            Size textSize = TextRenderer.MeasureText(Text, Font);
+            int textMaxWidth = Width - _ImageSize.Width - _Margin * 3;
             int textWidth = textSize.Width >= textMaxWidth ? textMaxWidth : textSize.Width;
-            int contentWidth = this._Margin + this._ImageSize.Width + textWidth;
+            int contentWidth = _Margin + _ImageSize.Width + textWidth;
             switch (TextImageRelation)
             {
                 case TextImageRelation.Overlay:
                     imageRect = new Rectangle(
-                        this._Margin,
-                        (this.Height - this._ImageSize.Height) / 2,
-                        this._ImageSize.Width,
-                        this._ImageSize.Height);
+                        _Margin,
+                        (Height - _ImageSize.Height) / 2,
+                        _ImageSize.Width,
+                        _ImageSize.Height);
                     textRect = new Rectangle(
-                        this._Margin,
-                        this._Margin,
-                        this.Width - this._Margin * 2,
-                        this.Height);
+                        _Margin,
+                        _Margin,
+                        Width - _Margin * 2,
+                        Height);
                     break;
                 case TextImageRelation.ImageAboveText:
                     imageRect = new Rectangle(
-                        (this.Width - this._ImageSize.Width) / 2,
-                        this._Margin,
-                        this._ImageSize.Width,
-                        this._ImageSize.Height);
+                        (Width - _ImageSize.Width) / 2,
+                        _Margin,
+                        _ImageSize.Width,
+                        _ImageSize.Height);
                     textRect = new Rectangle(
-                        this._Margin,
+                        _Margin,
                         imageRect.Bottom,
-                        this.Width - this._Margin * 2,
-                        this.Height - imageRect.Bottom - this._Margin);
+                        Width - _Margin * 2,
+                        Height - imageRect.Bottom - _Margin);
                     break;
                 case TextImageRelation.ImageBeforeText:
                     imageRect = new Rectangle(
-                        (this.Width - contentWidth) / 2,
-                        (this.Height - this._ImageSize.Height) / 2,
-                        this._ImageSize.Width,
-                        this._ImageSize.Height);
+                        (Width - contentWidth) / 2,
+                        (Height - _ImageSize.Height) / 2,
+                        _ImageSize.Width,
+                        _ImageSize.Height);
                     textRect = new Rectangle(
-                        imageRect.Right + this._Margin,
-                        this._Margin,
+                        imageRect.Right + _Margin,
+                        _Margin,
                         textWidth,
-                        this.Height - this._Margin * 2);
+                        Height - _Margin * 2);
                     break;
                 case TextImageRelation.TextAboveImage:
                     imageRect = new Rectangle(
-                        (this.Width - this._ImageSize.Width) / 2,
-                        this.Height - this._ImageSize.Height - this._Margin,
-                        this._ImageSize.Width,
-                        this._ImageSize.Height);
+                        (Width - _ImageSize.Width) / 2,
+                        Height - _ImageSize.Height - _Margin,
+                        _ImageSize.Width,
+                        _ImageSize.Height);
                     textRect = new Rectangle(
-                        this._Margin,
-                        this._Margin,
-                        this.Width - this._Margin * 2,
-                        this.Height - imageRect.Y - this._Margin);
+                        _Margin,
+                        _Margin,
+                        Width - _Margin * 2,
+                        Height - imageRect.Y - _Margin);
                     break;
                 case TextImageRelation.TextBeforeImage:
                     imageRect = new Rectangle(
-                        (this.Width + contentWidth) / 2 - this._ImageSize.Width,
-                        (this.Height - this._ImageSize.Height) / 2,
-                        this._ImageSize.Width,
-                        this._ImageSize.Height);
+                        (Width + contentWidth) / 2 - _ImageSize.Width,
+                        (Height - _ImageSize.Height) / 2,
+                        _ImageSize.Width,
+                        _ImageSize.Height);
                     textRect = new Rectangle(
-                        (this.Width - contentWidth) / 2,
-                        this._Margin,
+                        (Width - contentWidth) / 2,
+                        _Margin,
                         textWidth,
-                        this.Height - this._Margin * 2);
+                        Height - _Margin * 2);
                     break;
             }
 
             if (RightToLeft == RightToLeft.Yes)
             {
-                imageRect.X = this.Width - imageRect.Right;
-                textRect.X = this.Width - textRect.Right;
+                imageRect.X = Width - imageRect.Right;
+                textRect.X = Width - textRect.Right;
             }
         }
 
-
+        /// <summary>
+        /// 设置控件的形状
+        /// </summary>
         private void ResetRegion()
         {
-            if (this._CornerRadius > 0)
+            if (_CornerRadius > 0)
             {
-                Rectangle rect = new Rectangle(Point.Empty, this.Size);
-                //rect.Height--;
-                //rect.Width--;
-                RoundRectangle roundRect = new RoundRectangle(rect, new CornerRadius(this._CornerRadius));
-                if (this.Region != null)
-                {
-                    this.Region.Dispose();
-                }
-
-                this.Region = new Region(roundRect.ToGraphicsBezierPath());
+                Rectangle rect = new Rectangle(Point.Empty, Size);
+                RoundRectangle roundRect = new RoundRectangle(rect, new CornerRadius(_CornerRadius));
+                if (Region != null)
+                    Region.Dispose();
+                Region = new Region(roundRect.ToGraphicsBezierPath());
             }
         }
 

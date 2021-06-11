@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace ControlLibrary
 {
@@ -14,8 +9,8 @@ namespace ControlLibrary
 
         public LinearColor(Color color1, Color color2)
         {
-            this.First = color1;
-            this.Second = color2;
+            First = color1;
+            Second = color2;
         }
 
     }
@@ -38,10 +33,10 @@ namespace ControlLibrary
 
         public GradientColor(Color color1, Color color2, float[] factors, float[] positions)
         {
-            this.First = color1;
-            this.Second = color2;
-            this.Factors = factors == null ? new float[] { } : factors;
-            this.Positions = positions == null ? new float[] { } : positions;
+            First = color1;
+            Second = color2;
+            Factors = factors == null ? new float[] { } : factors;
+            Positions = positions == null ? new float[] { } : positions;
         }
     }
 

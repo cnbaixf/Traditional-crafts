@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ControlLibrary
+﻿namespace ControlLibrary
 {
     /// <summary>
     /// 矩形的圆角半径
@@ -35,7 +29,7 @@ namespace ControlLibrary
         /// 设置四个角为相同的圆角半径
         /// </summary>
         /// <param name="radius"></param>
-        public CornerRadius(int radius): this(radius, radius, radius, radius)
+        public CornerRadius(int radius) : this(radius, radius, radius, radius)
         {
         }
 
@@ -48,16 +42,11 @@ namespace ControlLibrary
         /// <param name="bottomRight"></param>
         public CornerRadius(int topLeft, int topRight, int bottomLeft, int bottomRight)
         {
-            this.TopLeft = topLeft;
-            this.TopRight = topRight;
-            this.BottomLeft = bottomLeft;
-            this.BottomRigth = bottomRight;
+            TopLeft = topLeft;
+            TopRight = topRight;
+            BottomLeft = bottomLeft;
+            BottomRigth = bottomRight;
         }
-      
 
-        
-        
-
-        
     }
 }

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.Drawing.Imaging;
-using System.Windows.Forms;
+using System.Drawing.Text;
 
 
 namespace ControlLibrary
@@ -123,7 +118,7 @@ namespace ControlLibrary
         }
 
         /// <summary>
-        /// 矩形单色
+        /// 矩形填充单色
         /// </summary>
         /// <param name="g"></param>
         /// <param name="rect">矩形区域</param>
@@ -141,7 +136,7 @@ namespace ControlLibrary
         }
 
         /// <summary>
-        /// 矩形渐变色
+        /// 矩形填充渐变色
         /// </summary>
         /// <param name="g"></param>
         /// <param name="rect">矩形区域</param>
@@ -162,7 +157,7 @@ namespace ControlLibrary
         }
 
         /// <summary>
-        /// 圆角矩形单色
+        /// 圆角矩形填充单色
         /// </summary>
         /// <param name="g"></param>
         /// <param name="roundRect">矩形区域</param>
@@ -183,7 +178,7 @@ namespace ControlLibrary
             }
         }
         /// <summary>
-        /// 圆角矩形渐变色
+        /// 圆角矩形填充渐变色
         /// </summary>
         /// <param name="g"></param>
         /// <param name="roundRect">矩形区域</param>
@@ -207,7 +202,7 @@ namespace ControlLibrary
         }
 
         /// <summary>
-        /// 使用渐变色渲染一个图形区域
+        /// 使用渐变色填充一个图形区域
         /// </summary>
         /// <param name="g"></param>
         /// <param name="path"></param>
@@ -224,7 +219,7 @@ namespace ControlLibrary
         }
 
         /// <summary>
-        /// 渲染圆角矩形区域
+        /// 使用渐变色填充圆角矩形区域
         /// </summary>
         /// <param name="g"></param>
         /// <param name="roundRect"></param>
@@ -287,23 +282,17 @@ namespace ControlLibrary
         }
 
         /// <summary>
-        /// 绘制指定区域的边框
+        /// 绘制圆角矩形的边框(向内绘制)
         /// </summary>
         /// <param name="g"></param>
-        /// <param name="roundRect"></param>
-        /// <param name="color"></param>
-        public static void DrawPathInnerBorder(Graphics g, RoundRectangle roundRect, Color color)
+        /// <param name="roundRect">圆角矩形区域</param>
+        /// <param name="color">边框颜色</param>
+        public static void DrawPathInnerBorder(Graphics g, RoundRectangle roundRect, Color color, float width)
         {
             Rectangle rect = roundRect.Rect;
             rect.X++; rect.Y++; rect.Width -= 2; rect.Height -= 2;
-            DrawPathBorder(g, new RoundRectangle(rect, roundRect.CornerRadius), new Pen(color,1));
+            DrawPathBorder(g, new RoundRectangle(rect, roundRect.CornerRadius), new Pen(color, width));
         }
-
-
-
-
-
-
 
         /// <summary>
         /// 绘制阶梯渐变的线条，可以在参数Blend对象中设置色彩混合规则
