@@ -117,13 +117,15 @@ namespace ControlLibrary
             }
         }
 
+        #region 矩形或椭圆
         /// <summary>
-        /// 矩形填充单色
+        /// 单色填充矩形或椭圆
         /// </summary>
         /// <param name="g"></param>
         /// <param name="rect">矩形区域</param>
         /// <param name="color">颜色</param>
-        public static void FillRectangle(Graphics g, Rectangle rect, Color color)
+        /// <param name="isEllipse">是否是椭圆</param>
+        public static void FillRectangle(Graphics g, Rectangle rect, Color color, bool isEllipse)
         {
             if (rect.Width <= 0 || rect.Height <= 0 || g == null)
             {
@@ -131,17 +133,21 @@ namespace ControlLibrary
             }
             using (Brush brush = new SolidBrush(color))
             {
-                g.FillRectangle(brush, rect);
+                if (isEllipse)
+                    g.FillEllipse(brush, rect);
+                else
+                    g.FillRectangle(brush, rect);
             }
         }
 
         /// <summary>
-        /// 矩形填充渐变色
+        /// 渐变色填充矩形或椭圆
         /// </summary>
         /// <param name="g"></param>
         /// <param name="rect">矩形区域</param>
         /// <param name="color">颜色</param>
-        public static void FillRectangle(Graphics g, Rectangle rect, GradientColor color)
+        /// <param name="isEllipse">是否是椭圆</param>
+        public static void FillRectangle(Graphics g, Rectangle rect, GradientColor color, bool isEllipse)
         {
             if (rect.Width <= 0 || rect.Height <= 0 || g == null)
             {
@@ -152,17 +158,22 @@ namespace ControlLibrary
             {
                 brush.Blend.Factors = color.Factors;
                 brush.Blend.Positions = color.Positions;
-                g.FillRectangle(brush, rect);
+                if (isEllipse)
+                    g.FillEllipse(brush, rect);
+                else
+                    g.FillRectangle(brush, rect);
             }
         }
+        #endregion
 
+        #region 圆角矩形
         /// <summary>
-        /// 圆角矩形填充单色
+        /// 单色填充圆角矩形
         /// </summary>
         /// <param name="g"></param>
         /// <param name="roundRect">矩形区域</param>
         /// <param name="color">颜色</param>
-        public static void FillRectangle(Graphics g, RoundRectangle roundRect, Color color)
+        public static void FillRoundRectangle(Graphics g, RoundRectangle roundRect, Color color)
         {
             if (roundRect.Rect.Width <= 0 || roundRect.Rect.Height <= 0)
             {
@@ -178,12 +189,12 @@ namespace ControlLibrary
             }
         }
         /// <summary>
-        /// 圆角矩形填充渐变色
+        /// 渐变色填充圆角矩形
         /// </summary>
         /// <param name="g"></param>
         /// <param name="roundRect">矩形区域</param>
         /// <param name="color">颜色</param>
-        public static void FillRectangle(Graphics g, RoundRectangle roundRect, GradientColor color)
+        public static void FillRoundRectangle(Graphics g, RoundRectangle roundRect, GradientColor color)
         {
             if (roundRect.Rect.Width <= 0 || roundRect.Rect.Height <= 0)
             {
@@ -202,7 +213,100 @@ namespace ControlLibrary
         }
 
         /// <summary>
-        /// 使用渐变色填充一个图形区域
+        /// 渐变色填充圆角矩形
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="roundRect"></param>
+        /// <param name="color1"></param>
+        /// <param name="color2"></param>
+        public static void FillRoundRectangle(Graphics g, RoundRectangle roundRect, Color color1, Color color2)
+        {
+            if (roundRect.Rect.Width <= 0 || roundRect.Rect.Height <= 0)
+            {
+                return;
+            }
+
+            using (GraphicsPath path = roundRect.ToGraphicsBezierPath())
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(roundRect.Rect, color1, color2, LinearGradientMode.Vertical))
+                {
+                    g.FillPath(brush, path);
+                }
+            }
+        }
+        #endregion
+
+        #region 三角形
+        /// <summary>
+        /// 单色填充三角形
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="triangle"></param>
+        /// <param name="color"></param>
+        public static void FillTriangle(Graphics g, Triangle triangle, Color color)
+        {
+            using (Brush brush = new SolidBrush(color))
+            {
+                g.FillPath(brush, triangle.GraphicsPath);
+            }
+        }
+        /// <summary>
+        /// 单色填充三角形
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="color"></param>
+        /// <param name="dir"></param>
+        public static void FillTriangle(Graphics g, Rectangle rect, EnumButtonDirection dir, Color color)
+        {
+            Triangle triangle = new Triangle(rect, dir);
+            using (Brush brush = new SolidBrush(color))
+            {
+                g.FillPath(brush, triangle.GraphicsPath);
+            }
+        }
+        /// <summary>
+        /// 渐变色填充三角形
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="triangle"></param>
+        /// <param name="color"></param>
+        public static void FillTriangle(Graphics g, Triangle triangle, GradientColor color)
+        {
+            FillPath(g, triangle.GraphicsPath, new Rectangle(triangle.point1, new Size(triangle.point2)), color);
+        }
+
+        /// <summary>
+        /// 渐变色填充三角形
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="rect"></param>
+        /// <param name="color"></param>
+        /// <param name="dir"></param>
+        public static void FillTriangle(Graphics g, Rectangle rect, GradientColor color, EnumButtonDirection dir)
+        {
+            Triangle triangle = new Triangle(rect, dir);
+            FillPath(g, triangle.GraphicsPath, rect, color);
+        }
+        #endregion
+
+
+
+        /// <summary>
+        /// 单色填充图形区域
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="path"></param>
+        /// <param name="color"></param>
+        public static void FillPath(Graphics g, GraphicsPath path, Color color)
+        {
+            using (SolidBrush brush = new SolidBrush(color))
+            {
+                g.FillPath(brush, path);
+            }
+        }
+
+        /// <summary>
+        /// 渐变色填充图形区域
         /// </summary>
         /// <param name="g"></param>
         /// <param name="path"></param>
@@ -218,42 +322,6 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>
-        /// 使用渐变色填充圆角矩形区域
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="roundRect"></param>
-        /// <param name="color1"></param>
-        /// <param name="color2"></param>
-        /// <param name="blend"></param>
-        public static void FillPath(Graphics g, RoundRectangle roundRect, Color color1, Color color2, Blend blend)
-        {
-            GradientColor color = new GradientColor(color1, color2, blend.Factors, blend.Positions);
-            GDIHelper.FillRectangle(g, roundRect, color);
-        }
-
-        /// <summary>
-        /// 使用渐变色填充区域
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="roundRect"></param>
-        /// <param name="color1"></param>
-        /// <param name="color2"></param>
-        public static void FillPath(Graphics g, RoundRectangle roundRect, Color color1, Color color2)
-        {
-            if (roundRect.Rect.Width <= 0 || roundRect.Rect.Height <= 0)
-            {
-                return;
-            }
-
-            using (GraphicsPath path = roundRect.ToGraphicsBezierPath())
-            {
-                using (LinearGradientBrush brush = new LinearGradientBrush(roundRect.Rect, color1, color2, LinearGradientMode.Vertical))
-                {
-                    g.FillPath(brush, path);
-                }
-            }
-        }
 
         /// <summary>
         /// 绘制一个图形区域的边框(向外绘制)
@@ -264,6 +332,7 @@ namespace ControlLibrary
         public static void DrawPathBorder(Graphics g, GraphicsPath path, Pen pen)
         {
             g.DrawPath(pen, path);
+            
         }
 
         /// <summary>
@@ -277,8 +346,19 @@ namespace ControlLibrary
         {
             using (GraphicsPath path = roundRect.ToGraphicsBezierPath())
             {
-                g.DrawPath(pen, path);
+                DrawPathBorder(g, path, pen);
             }
+        }
+
+        /// <summary>
+        /// 绘制三角形的边框(向外绘制)
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="Triangle"></param>
+        /// <param name="pen"></param>
+        public static void DrawPathBorder(Graphics g, Triangle Triangle, Pen pen)
+        {
+            DrawPathBorder(g, Triangle.GraphicsPath, pen);
         }
 
         /// <summary>

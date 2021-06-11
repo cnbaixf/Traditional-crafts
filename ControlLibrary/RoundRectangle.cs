@@ -6,7 +6,7 @@ namespace ControlLibrary
     /// <summary>
     /// 圆角矩形
     /// </summary>
-    internal class RoundRectangle
+    class RoundRectangle
     {
 
         public RoundRectangle(Rectangle rect, int radius) : this(rect, new CornerRadius(radius))

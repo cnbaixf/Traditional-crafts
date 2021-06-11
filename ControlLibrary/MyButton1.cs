@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace ControlLibrary
 {
     [DefaultEvent("Click")]
-    public partial class MyButton : Button
+    public partial class MyButton1 : Button
     {
         #region attribute
 
@@ -38,7 +39,7 @@ namespace ControlLibrary
         /// <summary>
         /// 控件高亮状态下的边框宽度
         /// </summary>
-        private int _HeightLightBorderWidth = 1;
+        private int _HighLightBorderWidth = 1;
 
         /// <summary>
         /// 控件焦点状态下的边框宽度
@@ -60,7 +61,6 @@ namespace ControlLibrary
         /// </summary>
         private Color _DefaultBorderColor = Color.Black;
 
-
         /// <summary>
         /// 控件高亮状态下的边框色
         /// </summary>
@@ -77,7 +77,7 @@ namespace ControlLibrary
         /// <summary>
         /// 构造函数
         /// </summary>
-        public MyButton()
+        public MyButton1()
         {
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -143,7 +143,7 @@ namespace ControlLibrary
         [Category("Properties")]
         [Browsable(true)]
         [Description("背景色")]
-        public new Color BackColor
+        public new Color DefaultBackColor
         {
             get { return base.BackColor; }
             set { base.BackColor = value; }
@@ -155,8 +155,8 @@ namespace ControlLibrary
         public Color HighLightBackColor
         {
             get { return _HighLightBackColor; }
-            set 
-            { 
+            set
+            {
                 _HighLightBackColor = value;
                 Invalidate();
             }
@@ -168,8 +168,8 @@ namespace ControlLibrary
         public Color FocusedBackColor
         {
             get { return _FocusedBackColor; }
-            set 
-            { 
+            set
+            {
                 _FocusedBackColor = value;
                 Invalidate();
             }
@@ -177,7 +177,7 @@ namespace ControlLibrary
         [Category("Properties")]
         [Browsable(true)]
         [Description("边框色")]
-        public Color BorderColor
+        public Color DefaultBorderColor
         {
             get { return _DefaultBorderColor; }
             set { _DefaultBorderColor = value; }
@@ -249,12 +249,12 @@ namespace ControlLibrary
         [Browsable(true)]
         [Description("高亮状态边框宽度")]
         [DefaultValue(1)]
-        public int HeightLightBorderWidth
+        public int HighLightBorderWidth
         {
-            get { return _HeightLightBorderWidth; }
+            get { return _HighLightBorderWidth; }
             set
             {
-                _HeightLightBorderWidth = value;
+                _HighLightBorderWidth = value;
                 Invalidate();
             }
         }
@@ -385,16 +385,16 @@ namespace ControlLibrary
                 case EnumControlState.Default:
                     if (FlatStyle != FlatStyle.Flat)
                     {
-                        GDIHelper.FillRectangle(g, roundRect, BackColor);
+                        GDIHelper.FillRoundRectangle(g, roundRect, DefaultBackColor);
                         GDIHelper.DrawPathBorder(g, roundRect, new Pen(_DefaultBorderColor, _DefaultBorderWidth));
                     }
                     break;
                 case EnumControlState.HeightLight:
-                    GDIHelper.FillRectangle(g, roundRect, _HighLightBackColor);
-                    GDIHelper.DrawPathBorder(g, roundRect, new Pen(_HighLightBorderColor, _HeightLightBorderWidth));
+                    GDIHelper.FillRoundRectangle(g, roundRect, _HighLightBackColor);
+                    GDIHelper.DrawPathBorder(g, roundRect, new Pen(_HighLightBorderColor, _HighLightBorderWidth));
                     break;
                 case EnumControlState.Focused:
-                    GDIHelper.FillRectangle(g, roundRect, _FocusedBackColor);
+                    GDIHelper.FillRoundRectangle(g, roundRect, _FocusedBackColor);
                     GDIHelper.DrawPathBorder(g, roundRect, new Pen(_FocusedBorderColor, _FocusedBorderWidth));
                     GDIHelper.DrawPathInnerBorder(g, roundRect, _FocusedBorderColor, 1);
                     break;
@@ -529,12 +529,6 @@ namespace ControlLibrary
 
 
         #endregion
-
-
-
-
-
-
 
     }
 }

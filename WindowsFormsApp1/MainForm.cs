@@ -22,5 +22,11 @@ namespace WindowsFormsApp1
         {
             Application.Exit();
         }
+
+        private void myButton11_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
+        }
     }
 }

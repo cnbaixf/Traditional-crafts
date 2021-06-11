@@ -5,7 +5,7 @@
     /// <summary>
     /// 控件的基本状态
     /// </summary>
-    internal enum EnumControlState
+    public enum EnumControlState
     {
         None,
 
@@ -27,12 +27,64 @@
 
     #endregion
 
+    //#region EnumButtonlShape
+    ///// <summary>
+    ///// 按钮的形状
+    ///// </summary>
+    //public enum EnumButtonlShape
+    //{
+    //    /// <summary>
+    //    /// 矩形
+    //    /// </summary>
+    //    Rectangle,
+    //    /// <summary>
+    //    /// 圆角矩形
+    //    /// </summary>
+    //    RoundRectangle,
+    //    /// <summary>
+    //    /// 三角形
+    //    /// </summary>
+    //    Triangle,
+    //    /// <summary>
+    //    /// 椭圆
+    //    /// </summary>
+    //    Ellipse
+    //}
+    //#endregion
+
+    #region
+    /// <summary>
+    /// 三角形按钮的朝向
+    /// </summary>
+    public enum EnumButtonDirection
+    {
+        /// <summary>
+        /// 向左
+        /// </summary>
+        Left,
+        /// <summary>
+        /// 向右
+        /// </summary>
+        Right,
+        /// <summary>
+        /// 向上
+        /// </summary>
+        Top,
+        /// <summary>
+        /// 向下
+        /// </summary>
+        Bottom
+    }
+    #endregion
+
+
+
     #region EnumMessageBox
 
     /// <summary>
     /// EnumMessageBox的信息类型
     /// </summary>
-    internal enum EnumMessageBox
+    public enum EnumMessageBox
     {
         /// <summary>
         /// 信息
@@ -76,7 +128,7 @@
     /// <summary>
     /// 分页大小
     /// </summary>
-    internal enum EnumPageSize
+    public enum EnumPageSize
     {
         Size_10 = 10,
 
