@@ -236,58 +236,7 @@ namespace ControlLibrary
         }
         #endregion
 
-        #region 三角形
-        /// <summary>
-        /// 单色填充三角形
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="triangle"></param>
-        /// <param name="color"></param>
-        public static void FillTriangle(Graphics g, Triangle triangle, Color color)
-        {
-            using (Brush brush = new SolidBrush(color))
-            {
-                g.FillPath(brush, triangle.GraphicsPath);
-            }
-        }
-        /// <summary>
-        /// 单色填充三角形
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="color"></param>
-        /// <param name="dir"></param>
-        public static void FillTriangle(Graphics g, Rectangle rect, EnumButtonDirection dir, Color color)
-        {
-            Triangle triangle = new Triangle(rect, dir);
-            using (Brush brush = new SolidBrush(color))
-            {
-                g.FillPath(brush, triangle.GraphicsPath);
-            }
-        }
-        /// <summary>
-        /// 渐变色填充三角形
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="triangle"></param>
-        /// <param name="color"></param>
-        public static void FillTriangle(Graphics g, Triangle triangle, GradientColor color)
-        {
-            FillPath(g, triangle.GraphicsPath, new Rectangle(triangle.point1, new Size(triangle.point2)), color);
-        }
-
-        /// <summary>
-        /// 渐变色填充三角形
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="rect"></param>
-        /// <param name="color"></param>
-        /// <param name="dir"></param>
-        public static void FillTriangle(Graphics g, Rectangle rect, GradientColor color, EnumButtonDirection dir)
-        {
-            Triangle triangle = new Triangle(rect, dir);
-            FillPath(g, triangle.GraphicsPath, rect, color);
-        }
-        #endregion
+       
 
 
 
@@ -350,17 +299,7 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>
-        /// 绘制三角形的边框(向外绘制)
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="Triangle"></param>
-        /// <param name="pen"></param>
-        public static void DrawPathBorder(Graphics g, Triangle Triangle, Pen pen)
-        {
-            DrawPathBorder(g, Triangle.GraphicsPath, pen);
-        }
-
+      
         /// <summary>
         /// 绘制圆角矩形的边框(向内绘制)
         /// </summary>

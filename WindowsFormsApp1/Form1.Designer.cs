@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace FilesManager
 {
     partial class Form1
     {
@@ -29,82 +29,68 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.myButton1 = new ControlLibrary.MyButton1();
-            this.myButton2 = new ControlLibrary.MyButton1();
-            this.myButton21 = new ControlLibrary.MyButton2();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // myButton1
+            // button1
             // 
-            this.myButton1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.myButton1.DefaultBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.myButton1.DefaultBorderColor = System.Drawing.Color.Black;
-            this.myButton1.FocusedBackColor = System.Drawing.Color.Transparent;
-            this.myButton1.FocusedBorderColor = System.Drawing.Color.Black;
-            this.myButton1.HighLightBackColor = System.Drawing.Color.Transparent;
-            this.myButton1.HighLightBorderColor = System.Drawing.Color.Black;
-            this.myButton1.Image = null;
-            this.myButton1.Location = new System.Drawing.Point(253, 90);
-            this.myButton1.Name = "myButton1";
-            this.myButton1.Size = new System.Drawing.Size(100, 28);
-            this.myButton1.TabIndex = 0;
-            this.myButton1.Text = "myButton1";
-            this.myButton1.UseVisualStyleBackColor = false;
+            this.button1.Location = new System.Drawing.Point(276, 125);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // myButton2
+            // textBox1
             // 
-            this.myButton2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.myButton2.DefaultBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.myButton2.DefaultBorderColor = System.Drawing.Color.Black;
-            this.myButton2.FocusedBackColor = System.Drawing.Color.Maroon;
-            this.myButton2.FocusedBorderColor = System.Drawing.Color.Black;
-            this.myButton2.HighLightBackColor = System.Drawing.Color.DarkRed;
-            this.myButton2.HighLightBorderColor = System.Drawing.Color.Gainsboro;
-            this.myButton2.Image = null;
-            this.myButton2.Location = new System.Drawing.Point(311, 204);
-            this.myButton2.Name = "myButton2";
-            this.myButton2.Size = new System.Drawing.Size(100, 28);
-            this.myButton2.TabIndex = 1;
-            this.myButton2.Text = "myButton2";
-            this.myButton2.UseVisualStyleBackColor = false;
+            this.textBox1.Location = new System.Drawing.Point(410, 127);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(309, 21);
+            this.textBox1.TabIndex = 1;
             // 
-            // myButton21
+            // textBox2
             // 
-            this.myButton21.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.myButton21.DefaultBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.myButton21.DefaultBorderColor = System.Drawing.Color.Red;
-            this.myButton21.DefaultBorderWidth = 5;
-            this.myButton21.FocusedBackColor = System.Drawing.Color.Transparent;
-            this.myButton21.FocusedBorderColor = System.Drawing.Color.Black;
-            this.myButton21.HighLightBackColor = System.Drawing.Color.Transparent;
-            this.myButton21.HighLightBorderColor = System.Drawing.Color.Black;
-            this.myButton21.Image = null;
-            this.myButton21.Location = new System.Drawing.Point(506, 128);
-            this.myButton21.Name = "myButton21";
-            this.myButton21.Size = new System.Drawing.Size(100, 28);
-            this.myButton21.TabIndex = 2;
-            this.myButton21.Text = "myButton21";
-            this.myButton21.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            this.myButton21.UseVisualStyleBackColor = false;
+            this.textBox2.Location = new System.Drawing.Point(302, 243);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(369, 151);
+            this.textBox2.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(64, 125);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.myButton21);
-            this.Controls.Add(this.myButton2);
-            this.Controls.Add(this.myButton1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private ControlLibrary.MyButton1 myButton1;
-        private ControlLibrary.MyButton1 myButton2;
-        private ControlLibrary.MyButton2 myButton21;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button2;
     }
 }
