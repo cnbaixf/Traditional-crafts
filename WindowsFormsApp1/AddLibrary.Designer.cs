@@ -36,6 +36,14 @@ namespace FilesManager
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.listBox6 = new System.Windows.Forms.ListBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.listBox7 = new System.Windows.Forms.ListBox();
             this.myButton11 = new ControlLibrary.MyButton1();
             this.myButton12 = new ControlLibrary.MyButton1();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -43,6 +51,10 @@ namespace FilesManager
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -60,6 +72,10 @@ namespace FilesManager
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -120,6 +136,90 @@ namespace FilesManager
             this.listBox3.Size = new System.Drawing.Size(786, 356);
             this.listBox3.TabIndex = 1;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.listBox4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(792, 362);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Picture";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // listBox4
+            // 
+            this.listBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.ItemHeight = 12;
+            this.listBox4.Location = new System.Drawing.Point(3, 3);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(786, 356);
+            this.listBox4.TabIndex = 2;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.listBox5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(792, 362);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Novel";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // listBox5
+            // 
+            this.listBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.ItemHeight = 12;
+            this.listBox5.Location = new System.Drawing.Point(3, 3);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(786, 356);
+            this.listBox5.TabIndex = 2;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.listBox6);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(792, 362);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Music";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // listBox6
+            // 
+            this.listBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox6.FormattingEnabled = true;
+            this.listBox6.ItemHeight = 12;
+            this.listBox6.Location = new System.Drawing.Point(3, 3);
+            this.listBox6.Name = "listBox6";
+            this.listBox6.Size = new System.Drawing.Size(786, 356);
+            this.listBox6.TabIndex = 2;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.listBox7);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(792, 362);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Game";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // listBox7
+            // 
+            this.listBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox7.FormattingEnabled = true;
+            this.listBox7.ItemHeight = 12;
+            this.listBox7.Location = new System.Drawing.Point(3, 3);
+            this.listBox7.Name = "listBox7";
+            this.listBox7.Size = new System.Drawing.Size(786, 356);
+            this.listBox7.TabIndex = 2;
+            // 
             // myButton11
             // 
             this.myButton11.BackColor = System.Drawing.SystemColors.Control;
@@ -154,6 +254,7 @@ namespace FilesManager
             this.myButton12.TabIndex = 4;
             this.myButton12.Text = "删除";
             this.myButton12.UseVisualStyleBackColor = true;
+            this.myButton12.Click += new System.EventHandler(this.myButton12_Click);
             // 
             // AddLibrary
             // 
@@ -171,6 +272,10 @@ namespace FilesManager
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -186,5 +291,13 @@ namespace FilesManager
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.ListBox listBox7;
     }
 }

@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Windows.Documents;
-using MediaInfoLib;
+using System.Data;
+
 
 namespace FilesManager
 {
     public enum FilterType
-    { 
+    {
         /// <summary>
         /// 所有
         /// </summary>
@@ -354,17 +352,16 @@ namespace FilesManager
 
 
         public static uint filesCount;
-        public static bool GetFromDirectory(string directory,FilterType filterType,out List<MediaInfo> value)
+        public static bool GetFromDirectory(string directory, FilterType filterType, ref List<string> value)
         {
-            List<MediaInfo> files = new List<MediaInfo>();
-
+            List<string> dir = new List<string>();
             switch (filterType)
             {
                 //case FilterType.All:
                 //    Everything_SetSearchW(directory);
                 //    break;
                 case FilterType.File:
-                    Everything_SetSearchW("file:"+directory);
+                    Everything_SetSearchW("file:" + directory);
                     break;
                 //case FilterType.Folder:
                 //    Everything_SetSearchW("folder:" + directory);
@@ -388,9 +385,9 @@ namespace FilesManager
                     Everything_SetSearchW("file:" + directory);
                     break;
             }
-          
+
             //获取文件名、路径
-            Everything_SetRequestFlags(EVERYTHING_REQUEST_FILE_NAME | EVERYTHING_REQUEST_PATH );
+            Everything_SetRequestFlags(EVERYTHING_REQUEST_FILE_NAME | EVERYTHING_REQUEST_PATH);
             //搜索结果按文件名称升序排列
             Everything_SetSort(EVERYTHING_SORT_NAME_ASCENDING);
             //执行搜索，成功则返回true
@@ -399,39 +396,93 @@ namespace FilesManager
                 filesCount = Everything_GetNumResults();
                 if (filesCount == 0)
                     if (Everything_GetLastError() != EVERYTHING_OK)
-                    {
-                        value = null;
                         return false;
-                    }
-                MediaInfo mi;
+                
                 for (uint i = 0; i < filesCount; i++)
-                {   
+                {
                     //获取文件路径
-                    StringBuilder stringBuilder=new StringBuilder(260) ;
+                    StringBuilder stringBuilder = new StringBuilder(260);
                     Everything_GetResultFullPathName(i, stringBuilder, 260);    //Win10  路径长度限制260字符
-                    //获取文件属性    名称、大小、时长等
-                    if (filterType == FilterType.Video)
-                        mi = new MediaInfo(stringBuilder.ToString());
-                    else if(filterType== FilterType.Picture)
-                        mi = new MediaInfo(stringBuilder.ToString(), true);
-                    else
-                        mi = new MediaInfo(stringBuilder.ToString(), false);
-                    files.Add(mi);
+                    
+                    FileInfo fi = new FileInfo(stringBuilder.ToString());
+                    if(!dir.Contains(fi.Directory.FullName))
+                        dir.Add(fi.Directory.FullName);         
                 }
+                dir.Sort();
+                value.AddRange(dir);
+                return true;
             }
-            value = files;
-            return true;
+            else
+                return false;
         }
 
+        public static bool GetFromDirectory(string directory, FilterType filterType, ref DataTable table)
+        {
+            switch (filterType)
+            {
+                //case FilterType.All:
+                //    Everything_SetSearchW(directory);
+                //    break;
+                case FilterType.File:
+                    Everything_SetSearchW("file:" + directory);
+                    break;
+                //case FilterType.Folder:
+                //    Everything_SetSearchW("folder:" + directory);
+                //    break;
+                case FilterType.Audio:
+                    Everything_SetSearchW("ext:aac;ac3;aif;aifc;aiff;au;cda;dts;fla;flac;it;m1a;m2a;m3u;m4a;mid;midi;mka;mod;mp2;mp3;mpa;ogg;ra;rmi;spc;rmi;snd;umx;voc;wav;wma;xm " + directory);
+                    break;
+                case FilterType.Picture:
+                    Everything_SetSearchW("ext:ani;bmp;gif;ico;jpe;jpeg;jpg;pcx;png;psd;tga;tif;tiff;webp;wmf " + directory);
+                    break;
+                case FilterType.Video:
+                    Everything_SetSearchW("ext:3g2;3gp;3gp2;3gpp;amr;amv;asf;avi;bdmv;bik;d2v;divx;drc;dsa;dsm;dss;dsv;evo;f4v;flc;fli;flic;flv;hdmov;ifo;ivf;m1v;m2p;m2t;m2ts;m2v;m4b;m4p;m4v;mkv;mp2v;mp4;mp4v;mpe;mpeg;mpg;mpls;mpv2;mpv4;mov;mts;ogm;ogv;pss;pva;qt;ram;ratdvd;rm;rmm;rmvb;roq;rpm;smil;smk;swf;tp;tpr;ts;vob;vp6;webm;wm;wmp;wmv " + directory);
+                    break;
+                case FilterType.ExecutableFile:
+                    Everything_SetSearchW("ext:bat;cmd;exe;msi;msp;scr " + directory);
+                    break;
+                case FilterType.Document:
+                    Everything_SetSearchW("ext:c;chm;cpp;csv;cxx;doc;docm;docx;dot;dotm;dotx;h;hpp;htm;html;hxx;ini;java;lua;mht;mhtml;odt;pdf;potx;potm;ppam;ppsm;ppsx;pps;ppt;pptm;pptx;rtf;sldm;sldx;thmx;txt;vsd;wpd;wps;wri;xlam;xls;xlsb;xlsm;xlsx;xltm;xltx;xml " + directory);
+                    break;
+                default:
+                    Everything_SetSearchW("file:" + directory);
+                    break;
+            }
 
+            //获取文件名、路径
+            Everything_SetRequestFlags(EVERYTHING_REQUEST_FILE_NAME | EVERYTHING_REQUEST_PATH);
+            //全字匹配
+            Everything_SetMatchWholeWord(true);
+            //搜索结果按文件名称升序排列
+            Everything_SetSort(EVERYTHING_SORT_NAME_ASCENDING);
+            //执行搜索，成功则返回true
+            if (Everything_QueryW(true))
+            {
+                filesCount = Everything_GetNumResults();
+                if (filesCount == 0)
+                    if (Everything_GetLastError() != EVERYTHING_OK)
+                        return false;
+                //MediaInfo mi;
+                //MD5 md5 = new MD5CryptoServiceProvider();
+                //StringBuilder sb = new StringBuilder();
+                for (uint i = 0; i < filesCount; i++)
+                {
+                    //获取文件路径
+                    StringBuilder stringBuilder = new StringBuilder(260);
+                    Everything_GetResultFullPathName(i, stringBuilder, 260);    //Win10  路径长度限制260字符
 
+                    FileInfo fi = new FileInfo(stringBuilder.ToString());
 
-
-
-
-
-
-
+                    string parent = fi.Directory.Name;
+                    
+                    if(!table.Rows.Contains(parent))
+                        table.Rows.Add(parent, fi.DirectoryName);
+                }
+                return true;
+            }
+            else
+                return false;
+        }
 
 
 

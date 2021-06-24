@@ -37,6 +37,7 @@ namespace FilesManager
             this.myButton5 = new ControlLibrary.MyButton1();
             this.myButton6 = new ControlLibrary.MyButton1();
             this.myButton7 = new ControlLibrary.MyButton1();
+            this.myButton111 = new ControlLibrary.MyButton1();
             this.myButton8 = new ControlLibrary.MyButton1();
             this.panel2 = new System.Windows.Forms.Panel();
             this.myButton110 = new ControlLibrary.MyButton1();
@@ -82,6 +83,7 @@ namespace FilesManager
             this.flowLayoutPanel1.Controls.Add(this.myButton5);
             this.flowLayoutPanel1.Controls.Add(this.myButton6);
             this.flowLayoutPanel1.Controls.Add(this.myButton7);
+            this.flowLayoutPanel1.Controls.Add(this.myButton111);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 33);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -220,6 +222,24 @@ namespace FilesManager
             this.myButton7.TabIndex = 13;
             this.myButton7.Text = "Game";
             this.myButton7.UseVisualStyleBackColor = true;
+            // 
+            // myButton111
+            // 
+            this.myButton111.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.myButton111.DefaultBackColor = System.Drawing.Color.LightSkyBlue;
+            this.myButton111.DefaultBorderColor = System.Drawing.Color.Black;
+            this.myButton111.FocusedBackColor = System.Drawing.Color.Transparent;
+            this.myButton111.FocusedBorderColor = System.Drawing.Color.Black;
+            this.myButton111.HighLightBackColor = System.Drawing.Color.Transparent;
+            this.myButton111.HighLightBorderColor = System.Drawing.Color.Black;
+            this.myButton111.Image = null;
+            this.myButton111.Location = new System.Drawing.Point(745, 3);
+            this.myButton111.Name = "myButton111";
+            this.myButton111.Size = new System.Drawing.Size(100, 28);
+            this.myButton111.TabIndex = 14;
+            this.myButton111.Text = "myButton111";
+            this.myButton111.UseVisualStyleBackColor = true;
+            this.myButton111.Click += new System.EventHandler(this.myButton111_Click);
             // 
             // myButton8
             // 
@@ -583,6 +603,7 @@ namespace FilesManager
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -636,6 +657,7 @@ namespace FilesManager
         private ControlLibrary.MyButton1 myButton110;
         private ControlLibrary.MyButton1 myButton19;
         private ControlLibrary.MyButton1 myButton18;
+        private ControlLibrary.MyButton1 myButton111;
     }
 }
 

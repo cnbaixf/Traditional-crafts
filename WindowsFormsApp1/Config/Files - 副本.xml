@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <AnimationInfo>
+    <F-_Animation_里_2_2D_1>
+        <F-_Animation_里_2_2D_1_交配>
+          <Animation root="F:\Animation\里\2\2D\1" parent="F:\Animation\里\2\2D\1\○○交配" name="○○交配 第一話 優等生の彼女はエルフのお姫様" episode="1" fullName="F:_Animation_里_2_2D_1_○○交配_○○交配 第一話 優等生の彼女はエルフのお姫様.mp4" size="201 MB" time="" resolution="" type="" bitRate="" frameRate="" videoLanguage="" Audio1Language="" Audio2Language=""></Animation>
+          <Animation root="F:\Animation\里\2\2D\1" parent="F:\Animation\里\2\2D\1\○○交配" name="○○交配 第二話 優等生の彼女はエルフのお姫様" episode="2" fullName="F:_Animation_里_2_2D_1_○○交配_○○交配 第一話 優等生の彼女はエルフのお姫様.mp4" size="201 MB" time="" resolution="" type="" bitRate="" frameRate="" videoLanguage="" Audio1Language="" Audio2Language=""></Animation>
+          <Animation root="F:\Animation\里\2\2D\1" parent="F:\Animation\里\2\2D\1\○○交配" name="○○交配 第三話 優等生の彼女はエルフのお姫様" episode="3" fullName="F:_Animation_里_2_2D_1_○○交配_○○交配 第一話 優等生の彼女はエルフのお姫様.mp4" size="201 MB" time="" resolution="" type="" bitRate="" frameRate="" videoLanguage="" Audio1Language="" Audio2Language=""></Animation>
+          <Animation root="F:\Animation\里\2\2D\1" parent="F:\Animation\里\2\2D\1\○○交配" name="○○交配 第四話 優等生の彼女はエルフのお姫様" episode="4" fullName="F:_Animation_里_2_2D_1_○○交配_○○交配 第一話 優等生の彼女はエルフのお姫様.mp4" size="201 MB" time="" resolution="" type="" bitRate="" frameRate="" videoLanguage="" Audio1Language="" Audio2Language=""></Animation>
+        </F-_Animation_里_2_2D_1_交配> 
+     </F-_Animation_里_2_2D_1>
+    
+    
+    <F-_Animation_里_2_2D_2>
+    </F-_Animation_里_2_2D_2>
+    
+    
+    
+    
+  </AnimationInfo>
+
+  <MovieInfo>
+    <Movie name="" title="" rootTitle="" fullName="" size="" time="" resolution="" type=""></Movie>
+  </MovieInfo>
+
+  <ComicInfo>
+    <Comic name="" title="" fullName="" page=""></Comic>
+  </ComicInfo>
+  
+  
+</root>

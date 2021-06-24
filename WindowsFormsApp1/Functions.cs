@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Web;
+using System.Security.Cryptography;
 
 namespace FilesManager
 {
@@ -17,6 +19,7 @@ namespace FilesManager
         public string[,] content;
     }
 
+    public enum FileType { Animation, Movie, Comic, Picture, Novel, Music, Game };
 
 
     public class Functions
@@ -99,13 +102,13 @@ namespace FilesManager
         #endregion
 
         #region 读XML文件
-        public static XmlNodeList ReadXML(string FilePath,string Type)
+        public static XmlNodeList ReadXML(string filePath, string infoType)
         {
             XmlDocument xml = new XmlDocument();
-            xml.LoadXml(FilePath);
-
+            //xml.LoadXml(filePath.Trim());
+            xml.Load(filePath);
             XmlNode xn = xml.SelectSingleNode("root");
-            XmlNodeList nl = xn.SelectSingleNode(Type).SelectNodes(Type.Replace("Info",""));
+            XmlNodeList nl = xn.SelectSingleNode(infoType).SelectNodes(infoType.Replace("Info", ""));
             return nl;
         }
 
@@ -122,26 +125,122 @@ namespace FilesManager
         #endregion
 
         #region 写XML文件
-        public static void WriteXML(string FilePath,string Type,params string[] AttributeAndValue)
+        public static void WriteXML(XmlDocument xml, string Type, string Library, params string[] AttributeAndValue)
         {
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(FilePath);
 
-            XmlNode parent = xml.SelectSingleNode(Type);
+            XmlNode infoNode = xml.SelectSingleNode("//" + Type);
+            if (infoNode == null)
+            {
+                XmlNode r = xml.SelectSingleNode("root");
+                infoNode = xml.CreateNode(XmlNodeType.Element, Type, "");
+                r.AppendChild(infoNode);
+            }
+
+            XmlNode libraryNode = infoNode.SelectSingleNode(PathToXMLPath(Library));
+            if (libraryNode == null)
+            {
+                libraryNode = xml.CreateNode(XmlNodeType.Element, PathToXMLPath(Library), "");
+                infoNode.AppendChild(libraryNode);
+            }
+
+
+
+            //XmlNode rootNode = null;
+            //if (root != "")
+            //{
+            //    rootNode = libraryNode.SelectSingleNode(PathToXMLPath(root));
+            //    if (rootNode == null)
+            //    {
+            //        rootNode = xml.CreateNode(XmlNodeType.Element, PathToXMLPath(root), "");
+            //        libraryNode.AppendChild(rootNode);
+            //    }
+            //}
+
+            //XmlNode parentNode = libraryNode.SelectSingleNode("//" + PathToXMLPath(parent));
+            //if (parentNode == null)
+            //{
+            //    parentNode = xml.CreateNode(XmlNodeType.Element, PathToXMLPath(parent), "");
+            //    libraryNode.AppendChild(parentNode);
+            //    //parentNode = libraryNode.SelectSingleNode(PathToXMLPath(parent));
+            //}
 
             XmlElement element = xml.CreateElement(Type.Replace("Info", ""));
-            
-            for(int i=0;i< AttributeAndValue.Length; i+=2)
-                element.SetAttribute(AttributeAndValue[i],AttributeAndValue[i+1]);
+            //if (parentNode.SelectSingleNode(Type.Replace("Info", "") + "[@MD5='" +MD5 + "']") == null)
+            //{
+            for (int i = 0; i < AttributeAndValue.Length; i += 2)
+                element.SetAttribute(AttributeAndValue[i], AttributeAndValue[i + 1]);
+            libraryNode.AppendChild(element);
+            //}
+            try
+            {
+                xml.Save(@"..\..\Config\Files.xml");
+            }
+            catch (Exception e)
+            {
+            }
+        }
+        public static void WriteXML(XmlDocument xml, string Type, string Library,string TagName,bool no, params string[] AttributeAndValue)
+        {
 
-            parent.AppendChild(element);
+            XmlNode infoNode = xml.SelectSingleNode("//" + Type);
+            if (infoNode == null)
+            {
+                XmlNode r = xml.SelectSingleNode("root");
+                infoNode = xml.CreateNode(XmlNodeType.Element, Type, "");
+                r.AppendChild(infoNode);
+            }
+
+            XmlNode libraryNode = infoNode.SelectSingleNode(PathToXMLPath(Library));
+            if (libraryNode == null)
+            {
+                libraryNode = xml.CreateNode(XmlNodeType.Element, PathToXMLPath(Library), "");
+                infoNode.AppendChild(libraryNode);
+            }
+
+
+
+            //XmlNode rootNode = null;
+            //if (root != "")
+            //{
+            //    rootNode = libraryNode.SelectSingleNode(PathToXMLPath(root));
+            //    if (rootNode == null)
+            //    {
+            //        rootNode = xml.CreateNode(XmlNodeType.Element, PathToXMLPath(root), "");
+            //        libraryNode.AppendChild(rootNode);
+            //    }
+            //}
+
+            //XmlNode parentNode = libraryNode.SelectSingleNode("//" + PathToXMLPath(parent));
+            //if (parentNode == null)
+            //{
+            //    parentNode = xml.CreateNode(XmlNodeType.Element, PathToXMLPath(parent), "");
+            //    libraryNode.AppendChild(parentNode);
+            //    //parentNode = libraryNode.SelectSingleNode(PathToXMLPath(parent));
+            //}
+
+            XmlElement element = xml.CreateElement(TagName);
+            //if (parentNode.SelectSingleNode(Type.Replace("Info", "") + "[@MD5='" +MD5 + "']") == null)
+            //{
+            for (int i = 0; i < AttributeAndValue.Length; i += 2)
+                element.SetAttribute(AttributeAndValue[i], AttributeAndValue[i + 1]);
+            libraryNode.AppendChild(element);
+            //}
+            try
+            {
+                xml.Save(@"..\..\Config\Files.xml");
+            }
+            catch (Exception e)
+            {
+            }
         }
 
-        public static void WriteXML(string FilePath, string Type, string targetAttribute, string targetValue, string writenAttribute,string writenValue)
+
+
+        public static void WriteXML(string FilePath, string Type, string targetAttribute, string targetValue, string writenAttribute, string writenValue)
         {
             XmlDocument xml = new XmlDocument();
             xml.LoadXml(FilePath);
-            XmlNode xn = xml.SelectSingleNode(Type + "/" + Type.Replace("Info", "") + "[@" + targetAttribute + "='" + targetValue + "']");
+            XmlNode xn = xml.SelectSingleNode(Type + "/" + Type.Replace("Info", "") + "[@" + targetAttribute + "='" + GenerateConcatForXPath(targetValue) + "']");
             xn.Attributes[writenAttribute].Value = writenValue;
         }
 
@@ -416,7 +515,7 @@ namespace FilesManager
             return rBuilder.ToString();
         }
 
-        
+
 
         public static string StringToEscapeFormat(string str)
         {
@@ -429,6 +528,135 @@ namespace FilesManager
         {
             return str.Replace("\\n", "\n").Replace("\\r", "\r").Replace("\\t", "\t").Replace("\\s", " ");
         }
+
+
+        /// <summary>
+        /// 将路径字符串中的:替换为-，\替换为_  删除空格
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string PathToXMLPath(string str)
+        {
+            return DelQuota(XMLStringFilter(ToDBC(str.Replace(":", "-").Replace("\\", "_").Replace(" ", ""))));
+            //return str.Replace(":", "-").Replace("\\", "_").Replace(" ", "");
+        }
+
+        /// <summary>
+        /// 过滤XML非法字符串
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string XMLStringFilter(string str)
+        {
+            foreach (char c in str)
+            {
+                if (!IsLegalXmlChar(c))
+                {
+                    str = str.Replace(c.ToString(), "");
+                }
+            }
+            return str;
+
+            // return Regex.Replace(HttpUtility.HtmlEncode(str), @"[\x00-\x08]|[\x0B-\x0C]|[\x0E-\x1F]", "");
+        }
+        /// <summary>
+        /// 判断字符是否为XML合法字符
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
+        private static bool IsLegalXmlChar(int character)
+        {
+            return
+            (
+                 character == 0x9 /* == '/t' == 9   */     ||
+                 character == 0xA /* == '/n' == 10  */     ||
+                 character == 0xD /* == '/r' == 13  */     ||
+                (character >= 0x20 && character <= 0xD7FF) && character != 0x2026 && character != 0x25CB && character != 0x2606 && character != 0X30FB ||
+                character >= 0xE000 && character <= 0xFFFD && character != 0xFF01 ||
+                (character >= 0x10000 && character <= 0x10FFFF)
+            );
+        }
+        /// <summary>
+        /// 全角转半角
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static String ToDBC(String input)
+        {
+            char[] c = input.ToCharArray();
+            for (int i = 0; i < c.Length; i++)
+            {
+                if (c[i] == 12288)
+                {
+                    c[i] = (char)32;
+                    continue;
+                }
+                if (c[i] > 65280 && c[i] < 65375)
+                    c[i] = (char)(c[i] - 65248);
+            }
+            return new String(c);
+        }
+        /// <summary>
+        /// 删除字符串中的XML非法字符
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string DelQuota(string str)
+        {
+            string result = str;
+            string[] strQuota = { "~", "!", "×", "♂", "―", "〜", "@", "+", "=", "#", "$", "、", "∞", "　", " ", "%", "^", "&", "*", "(", ")", "`", "‘", "’", "'", ",", "/", "/,", "[", "]", "【", "】", "「", "」", "<", ">", "?", "|", "↑", "↓", "←", "→", "･", "♥", "▼", "●", "★", "：" };
+            foreach (string item in strQuota)
+            {
+                if (result.Contains(item))
+                {
+                    result = result.Replace(item, "");
+                }
+            }
+            return result;
+        }
+        /// <summary>
+        /// XML转义    将字符串中的"转换成&apos;
+        /// </summary>
+        /// <param name="a_xPathQueryString"></param>
+        /// <returns></returns>
+        public static string GenerateConcatForXPath(string a_xPathQueryString)
+        {
+            string returnString = string.Empty;
+            string searchString = a_xPathQueryString;
+            returnString = searchString.Replace("\"", "&apos;");
+
+            return returnString;
+        }
+
+        /// <summary>
+        /// 获取文件的MD5码
+        /// </summary>
+        /// <param name="fileName">传入的文件名（含路径及后缀名）</param>
+        /// <returns></returns>
+        public static string GetMD5HashFromFile(string fileName)
+        {
+            try
+            {
+                FileStream file = new FileStream(fileName, System.IO.FileMode.Open);
+                MD5 md5 = new MD5CryptoServiceProvider();
+                byte[] retVal = md5.ComputeHash(file);
+                file.Close();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < retVal.Length; i++)
+                {
+                    sb.Append(retVal[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
+            }
+        }
+
+
+
+
 
     }
 }
